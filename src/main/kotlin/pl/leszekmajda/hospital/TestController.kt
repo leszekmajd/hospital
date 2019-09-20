@@ -12,5 +12,6 @@ class TestController {
     fun hospital(model: Model): String {
         model["title"] = "Hospital_Test"
         return "hospital"
+
     }
 }
