@@ -11,7 +11,7 @@ class TestController {
     @GetMapping("/")
     fun hospital(model: Model): String {
         model["title"] = "Hospital_Test"
-        return "hospital"
+        return "hospital" //return
 
     }
 }
