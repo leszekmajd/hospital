@@ -1,11 +1,10 @@
 package pl.leszekmajda.hospital.dao
 
 import java.time.LocalDateTime
+import javax.persistence.*
 
-class Appointment {
-    var appointmentDate : LocalDateTime? = null
-    var patient : Patient? = null
-    var Doctor : Doctor? = null
-    var place : String = ""
+@Entity
+class Appointment (var appointmentDate : LocalDateTime? = null, var place: String="",
+                   @ManyToOne var patient: Patient, @ManyToOne var doctor: Doctor){
 
 }

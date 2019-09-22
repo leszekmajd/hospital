@@ -1,7 +1,8 @@
 package pl.leszekmajda.hospital.dao
 
-class Doctor {
-    var id :Int? = null
-    var name :String = ""
-    var specialisation :String= ""
+import javax.persistence.*
+
+@Entity
+class Doctor ( var name: String, var specialisation: String, @Id @GeneratedValue var id: Long?=null){
+
 }
