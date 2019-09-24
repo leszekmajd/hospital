@@ -1,0 +1,15 @@
+{{> header}}
+<div class="appointments">
+    {{#appointments}}
+        <section>
+            <header class="appointment-header">
+                <h2 class="appointment-title"><a href="/appointment/{{id}}">Appointment id:{{id}}</a></h2>
+                <div class="appointment-meta">Doctor:  <strong>{{doctor.name}} {{doctor.surname}}</strong> vs. Patient: <strong>{{patient.name}} {{patient.surname}}</strong></div>
+            </header>
+            <div class="appointment-place">
+               place: {{place}}
+            </div>
+        </section><hr />
+    {{/appointments}}
+</div>
+{{> footer}}

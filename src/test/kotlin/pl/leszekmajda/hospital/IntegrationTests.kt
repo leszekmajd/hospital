@@ -19,7 +19,7 @@ class IntegrationTests(@Autowired val restTemplate: TestRestTemplate) {
     }
 
     @Test
-    fun `check ststus code of main page`() {
+    fun `check status code of main page`() {
         println("check status code of main page")
         val entity = restTemplate.getForEntity<String>("/")
         assertThat(entity.statusCode).isEqualTo(HttpStatus.OK)
@@ -27,10 +27,10 @@ class IntegrationTests(@Autowired val restTemplate: TestRestTemplate) {
 
     @Test
     fun `check page title and end tag`() {
-        println("check status code status code")
+        println("check page title and end tag ")
         val entity = restTemplate.getForEntity<String>("/")
-        assertThat(entity.body).contains("<h1>Hospital_Test</h1>")
-        assertThat(entity.body).endsWith("</htm>") //er
+        assertThat(entity.body).contains("<h1>RSQ Hospital</h1>")
+        assertThat(entity.body).endsWith("</html>")
     }
 
     @AfterAll

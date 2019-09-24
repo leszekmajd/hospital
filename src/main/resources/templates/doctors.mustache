@@ -1,0 +1,12 @@
+{{> header}}
+<div class="doctors">
+    {{#doctors}}
+        <section>
+            <div class="doctors-header">
+                <h2 class="doctors-title"><a href="/doctor/{{id}}">dr {{name}} {{surname}}</a></h2>
+                <div class="doctors-meta">id: <strong>{{id}}</strong>, specialisation: <strong>{{specialisation}}</strong></div>
+            </div>
+        </section><hr />
+    {{/doctors}}
+</div>
+{{> footer}}
