@@ -26,6 +26,27 @@ class IntegrationTests(@Autowired val restTemplate: TestRestTemplate) {
     }
 
     @Test
+    fun `check status code of patients page`() {
+        println("check status code of patient page")
+        val entity = restTemplate.getForEntity<String>("/patient")
+        assertThat(entity.statusCode).isEqualTo(HttpStatus.OK)
+    }
+
+    @Test
+    fun `check status code of doctor page`() {
+        println("check status code of doctor page")
+        val entity = restTemplate.getForEntity<String>("/doctor")
+        assertThat(entity.statusCode).isEqualTo(HttpStatus.OK)
+    }
+
+    @Test
+    fun `check status code of appointments page`() {
+        println("check status code of appointments page")
+        val entity = restTemplate.getForEntity<String>("/appointment")
+        assertThat(entity.statusCode).isEqualTo(HttpStatus.OK)
+    }
+
+    @Test
     fun `check page title and end tag`() {
         println("check page title and end tag ")
         val entity = restTemplate.getForEntity<String>("/")

@@ -1,6 +1,9 @@
-package pl.leszekmajda.hospital.dao
+package pl.leszekmajda.hospital
 
 import org.springframework.data.repository.CrudRepository
+import pl.leszekmajda.hospital.dao.Appointment
+import pl.leszekmajda.hospital.dao.Doctor
+import pl.leszekmajda.hospital.dao.Patient
 
 interface AppointmentRepository : CrudRepository<Appointment, Long> {
 

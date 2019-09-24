@@ -42,4 +42,14 @@ class RepositoriesTests @Autowired constructor(
 
         assertThat(patient).isEqualTo(patient2)
     }
+
+    @Test
+    fun `When findById then return Doctor`() {
+        val doctor = Doctor("Leszek", "Majda", "Cardiologist")
+        entityManager.persist(doctor)
+        entityManager.flush()
+        val doctor2 = patientRepository.findByIdOrNull(doctor.id!!)
+
+        assertThat(doctor).isEqualTo(doctor2)
+    }
 }
