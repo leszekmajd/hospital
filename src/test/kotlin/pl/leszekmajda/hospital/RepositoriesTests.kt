@@ -25,7 +25,6 @@ class RepositoriesTests @Autowired constructor(
         entityManager.persist(patient)
         val doctor = Doctor("Maciej", "Łopucki", "dermatolog")
         entityManager.persist(doctor)
-        d
         val appointment = Appointment(appointmentDate=LocalDateTime.parse("2018-12-12T16:50:00"), place="Gabinet 108.", doctor = doctor, patient=patient)
         entityManager.persist(appointment)
         entityManager.flush()
@@ -48,8 +47,7 @@ class RepositoriesTests @Autowired constructor(
         val doctor = Doctor("Leszek", "Majda", "Cardiologist")
         entityManager.persist(doctor)
         entityManager.flush()
-        val doctor2 = patientRepository.findByIdOrNull(doctor.id!!)
-
+        val doctor2 = doctorRepository.findByIdOrNull(doctor.id!!)
         assertThat(doctor).isEqualTo(doctor2)
     }
 }

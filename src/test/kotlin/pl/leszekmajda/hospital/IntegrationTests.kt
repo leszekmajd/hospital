@@ -47,10 +47,37 @@ class IntegrationTests(@Autowired val restTemplate: TestRestTemplate) {
     }
 
     @Test
-    fun `check page title and end tag`() {
-        println("check page title and end tag ")
+    fun `check page title and content of main`() {
+        println("check page title and content of main")
         val entity = restTemplate.getForEntity<String>("/")
         assertThat(entity.body).contains("<h1>RSQ Hospital</h1>")
+        assertThat(entity.body).endsWith("</html>")
+    }
+
+    @Test
+    fun `check pcontent of appointment list`() {
+        println("check content of appointment page")
+        val entity = restTemplate.getForEntity<String>("/appointment/")
+        assertThat(entity.body).contains("RSQ Hospital")
+        assertThat(entity.body).contains("Cabinet 108")
+        assertThat(entity.body).endsWith("</html>")
+    }
+
+    @Test
+    fun `check content of doctor list`() {
+        println("check  content of doctor list page")
+        val entity = restTemplate.getForEntity<String>("/doctor/")
+        assertThat(entity.body).contains("RSQ Hospital")
+        assertThat(entity.body).contains("Laryngologist")
+        assertThat(entity.body).endsWith("</html>")
+    }
+
+    @Test
+    fun `check content of patient list`() {
+        println("check  content of patient list page")
+        val entity = restTemplate.getForEntity<String>("/patient/")
+        assertThat(entity.body).contains("RSQ Hospital")
+        assertThat(entity.body).contains("Smith")
         assertThat(entity.body).endsWith("</html>")
     }
 
