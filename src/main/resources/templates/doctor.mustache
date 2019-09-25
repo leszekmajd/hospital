@@ -4,7 +4,36 @@
             <div class="doctor-header">
                 <h2 class="doctor-title"><a href="/doctor/{{doctor.id}}">dr {{doctor.name}} {{doctor.surname}}</a></h2>
                 <div class="doctor-meta">id: <strong>{{doctor.id}}</strong>, Specialisation: <strong>{{doctor.specialisation}}</strong></div>
+                <hr /><strong> Edit:</strong><br />
+                <form method="post" action="/doctor/{{doctor.id}}">
+                    <label for="name">Name: </label>
+                    <input name="name" type="text" value="{{doctor.name}}" />
+                    <label for="surname"> Surname: </label>
+                    <input name="surname" type="text" value="{{doctor.surname}}" />
+                    <label for="specialisation"> Address: </label>
+                    <input name="specialisation" type="text" value="{{doctor.specialisation}}" />
+                    <button type="submit" value="save patient">save changes</button>
+                </form>
+                <hr />
             </div>
         </section>
+    <hr />
+    <h2>Dr {{doctor.name}} {{doctor.surname}} appointments</h2>
+    {{#appointments}}
+        <section>
+            <header class="appointment-header">
+                <h3 class="appointment-title"><a href="/appointment/{{id}}">Appointment id:{{id}}</a></h3>
+                <div class="appointment-meta">Doctor:  <strong>{{doctor.name}} {{doctor.surname}}</strong> vs. Patient: <strong>{{patient.name}} {{patient.surname}}</strong></div>
+            </header>
+            <div class="appointment-place">
+                place: {{place}}<br />
+                Appointment date and time: {{appointmentDate}}
+            </div>
+            <form method="get" action="/doctor/{{doctor.id}}/delete-appointment/{{id}}">
+                <input type="submit"  value="delete" style="color: white; background-color: red;" />
+            </form>
+        </section><hr />
+    {{/appointments}}
+
 </div>
 {{> footer}}
