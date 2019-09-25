@@ -1,10 +1,24 @@
 {{> header}}
 <div class="patients">
+    Add new: <br />
+    <form method="post" action="/patient">
+        <label for="name">Name: </label>
+        <input name="name" type="text" value="" />
+        <label for="surname"> Surname: </label>
+        <input name="surname" type="text" value="" />
+        <label for="address"> Address: </label>
+        <input name="address" type="text" value="" />
+        <button type="submit" value="save patient">save patient</button>
+    </form>
+    <hr />
     {{#patients}}
         <section>
             <div class="patients-header">
                 <h2 class="patients-title"><a href="/patient/{{id}}">{{name}} {{surname}}</a></h2>
                 <div class="patients-meta">id: <strong>{{id}}</strong>, address: <strong>{{address}}</strong></div>
+                <form method="get" action="/patient/delete/{{id}}">
+                    <input type="submit" value="delete" style="color: white; background-color: red;" />
+                </form>
             </div>
         </section><hr />
     {{/patients}}

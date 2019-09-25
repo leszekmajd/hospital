@@ -1,5 +1,26 @@
 {{> header}}
 <div class="appointments">
+    Add new: <br />
+    <form method="post" action="/appointment">
+        <label for="patient-id">Patient: </label>
+        <select name="patient-id" >
+        {{#patients}}
+            <option value="{{id}}">{{name}} {{surname}}</option>
+        {{/patients}}
+        </select>
+        <label for="doctor-id">Doctor: </label>
+        <select name="doctor-id" >
+            {{#doctors}}
+                <option value="{{id}}">{{name}} {{surname}} : {{specialisation}}</option>
+            {{/doctors}}
+        </select>
+        <label for="date"> Surname: </label>
+        <input name="date"  type="datetime-local" min="2019-09-25T08:00" value="" />
+        <label for="place"> Place: </label>
+        <input name="place" type="text" value="" />
+        <button type="submit" value="plan appointment">plan appointment</button>
+    </form>
+    <hr />
     {{#appointments}}
         <section>
             <header class="appointment-header">
@@ -9,6 +30,9 @@
             <div class="appointment-place">
                place: {{place}}
             </div>
+            <form method="get" action="/appointment/delete/{{id}}">
+                <input type="submit"  value="delete" style="color: white; background-color: red;" />
+            </form>
         </section><hr />
     {{/appointments}}
 </div>

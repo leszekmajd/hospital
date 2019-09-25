@@ -1,10 +1,23 @@
 {{> header}}
 <div class="doctors">
+    Add new: <br />
+    <form method="post" action="/doctor">
+        <label for="name">Name: </label>
+        <input name="name" type="text" value="" />
+        <label for="surname"> Surname: </label>
+        <input name="surname" type="text" value="" />
+        <label for="specialisation"> Specialisation: </label>
+        <input name="specialisation" type="text" value="" />
+        <button type="submit" value="Submit">save doctor</button>
+    </form>
     {{#doctors}}
         <section>
             <div class="doctors-header">
                 <h2 class="doctors-title"><a href="/doctor/{{id}}">dr {{name}} {{surname}}</a></h2>
                 <div class="doctors-meta">id: <strong>{{id}}</strong>, specialisation: <strong>{{specialisation}}</strong></div>
+                <form method="get" action="/doctor/delete/{{id}}">
+                    <input type="submit"  value="delete" style="color: white; background-color: red;" />
+                </form>
             </div>
         </section><hr />
     {{/doctors}}
