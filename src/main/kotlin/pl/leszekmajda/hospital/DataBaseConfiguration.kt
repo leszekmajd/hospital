@@ -5,10 +5,10 @@ import org.springframework.context.annotation.*
 import pl.leszekmajda.hospital.dao.*
 import java.time.LocalDateTime
 
-@Configuration
+//@Configuration
 class DataBaseConfiguration {
 
-    @Bean
+    //@Bean
     fun databaseInitializer(patientRepository: PatientRepository,
                             doctorRepository: DoctorRepository,appointmentRepository: AppointmentRepository) = ApplicationRunner {
 
