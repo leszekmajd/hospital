@@ -1,5 +1,6 @@
 package pl.leszekmajda.hospital.dao
 
+import jdk.nashorn.internal.runtime.JSType.toLong
 import javax.persistence.*
 
 @Entity

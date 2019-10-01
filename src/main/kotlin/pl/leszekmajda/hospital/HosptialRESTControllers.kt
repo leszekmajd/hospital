@@ -10,8 +10,8 @@ import java.time.LocalDateTime
 class PatientController(private val repository: PatientRepository) {
 
     /*
-        GET method
-        Returns array of all patients
+    GET method
+    Returns array of all patients
     */
     @GetMapping("/")
     fun findAll(): Iterable<Patient> = repository.findAll()
@@ -162,6 +162,22 @@ class AppointmentController(private val repository: AppointmentRepository,
     fun findOne(@PathVariable appointment: Appointment) = appointment
 
     /*
+    GET method
+    Returns specific Patient appointments
+    */
+    @GetMapping("/patient/{patientId}")
+    fun findByPatient(@PathVariable patientId: Long) :Iterable<Appointment>
+            = repository.findAllByPatientId(patientId)
+
+    /*
+    GET method
+    Returns specific Doctor appointments
+    */
+    @GetMapping("/doctor/{doctorId}")
+    fun findByDoctor( @PathVariable doctorId: Long) :Iterable<Appointment>
+            = repository.findAllByDoctorId(doctorId)
+
+    /*
     POST method
     For proper execution add header in request : Content-Type:"application/json"
     It is also mandatory to use json names accurate for appointment except patient and doctor references.
@@ -181,6 +197,13 @@ class AppointmentController(private val repository: AppointmentRepository,
         val doctor= doctorRepository.findById(request.doctorId!!).get()
         return repository.save(Appointment(request.appointmentDate, request.place!!, patient, doctor))
     }
+
+    @PostMapping("/create")
+    fun create(@RequestBody appointment: Appointment): Appointment{
+
+        return repository.save(appointment)
+    }
+
     /*
     DELETE Method
     Deletes specific appointment with id given in URL
