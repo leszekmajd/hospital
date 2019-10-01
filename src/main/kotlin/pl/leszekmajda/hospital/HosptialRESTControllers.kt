@@ -10,8 +10,8 @@ import java.time.LocalDateTime
 class PatientController(private val repository: PatientRepository) {
 
     /*
-        GET method
-        Returns array of all patients
+    GET method
+    Returns array of all patients
     */
     @GetMapping("/")
     fun findAll(): Iterable<Patient> = repository.findAll()
