@@ -200,7 +200,6 @@ class AppointmentController(private val repository: AppointmentRepository,
 
     @PostMapping("/create")
     fun create(@RequestBody appointment: Appointment): Appointment{
-
         return repository.save(appointment)
     }
 
